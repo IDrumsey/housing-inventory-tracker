@@ -1,7 +1,7 @@
 import json, os
 from datetime import datetime
 
-import utility
+import src.utility as utility
 
 import matplotlib.pyplot as plt
 import mplcyberpunk as punkplt
