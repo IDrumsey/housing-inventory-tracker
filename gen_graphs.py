@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import mplcyberpunk as punkplt
 
 dataURI = os.getenv("formatted_historical_county_inventory_data_location")
-saveDir = "./generated/"
+saveDir = os.getenv("inventory-tracker-graph-save-location")
 
 plt.style.use("cyberpunk")
 
@@ -58,7 +58,3 @@ def generateInventoryOverTimeGraph():
     plt.subplots_adjust(bottom=0.2)
     plt.savefig(f"{saveDir}\\stark.png")
     # plt.show()
-
-
-if __name__ == "__main__":
-    generateInventoryOverTimeGraph()
