@@ -1,4 +1,7 @@
 import json, os
+from datetime import datetime
+
+import utility
 
 import matplotlib.pyplot as plt
 import mplcyberpunk as punkplt
@@ -10,8 +13,6 @@ plt.style.use("cyberpunk")
 
 
 fipsNameMapping = {39151: "Stark", 39153: "Summit"}
-
-fipsToGraph = [39151]
 
 
 monthNumsMapping = {
@@ -30,7 +31,9 @@ monthNumsMapping = {
 }
 
 
-def generateInventoryOverTimeGraph():
+def generateInventoryOverTimeGraph(
+    fipsToGraph: list[int], colorsToUse: list[str] = ["#e01485", "#42e6f5"]
+):
     # read the data json
     with open(dataURI, "r") as dataFile:
         data = json.load(dataFile)
@@ -38,7 +41,7 @@ def generateInventoryOverTimeGraph():
     # only plot the counties specified
     data = [county for county in data if county["fips"] in fipsToGraph]
 
-    for county in data:
+    for i, county in enumerate(data):
         # sort the inventory items by date
         inventory = sorted(county["inventory"], key=lambda x: (x["year"], x["month"]))
         dates = [
@@ -46,15 +49,19 @@ def generateInventoryOverTimeGraph():
         ]
         inventoryValues = [x["total_inventory"] for x in inventory]
 
-        plt.plot(dates, inventoryValues, color="#e01485")
+        plt.plot(dates, inventoryValues, color=colorsToUse[i % len(colorsToUse)])
 
     punkplt.add_glow_effects()
 
     datesToShowOnXAxis = [date for i, date in enumerate(dates) if i % 4 == 0]
     plt.xticks(datesToShowOnXAxis, rotation=70)
     plt.ylabel("Total Inventory")
-    plt.title("Stark County Housing Inventory Change Over Time")
+
+    plt.title(utility.generatePlotTitle(fipsToGraph))
 
     plt.subplots_adjust(bottom=0.2)
-    plt.savefig(f"{saveDir}\\stark.png")
+
+    now = datetime.now()
+    saveFileName = now.strftime("%Y-%m-%d_%H-%M-%S")
+    plt.savefig(f"{saveDir}\\{saveFileName}.png")
     # plt.show()

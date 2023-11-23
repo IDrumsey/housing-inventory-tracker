@@ -8,10 +8,8 @@ county_historical_formatted_data_save_file = os.getenv(
     "formatted_historical_county_inventory_data_location"
 )
 
-fipsCountiesToExtract = [39151, 39153]
 
-
-def formatMonthlyCountyHistoricalData():
+def formatMonthlyCountyHistoricalData(fipsCountiesToExtract: list[int]):
     """
     Extracts and formats the data from the monthly county historical data csv
     """
