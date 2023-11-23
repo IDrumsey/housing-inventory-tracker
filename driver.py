@@ -1,5 +1,5 @@
 import os, argparse
-import fetch_data, format_data, gen_graphs
+from src import fetch_data, format_data, gen_graphs
 
 county_historical_data_csv = "https://econdata.s3-us-west-2.amazonaws.com/Reports/Core/RDC_Inventory_Core_Metrics_County_History.csv"
 county_historical_data_save_file = os.environ.get(
