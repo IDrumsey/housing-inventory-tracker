@@ -13,3 +13,14 @@ import pytest
 )
 def test_generatePlotTitle(input, expected):
     assert utility.generatePlotTitle(input) == expected
+
+
+@pytest.mark.parametrize(
+    ("input", "expected"),
+    (
+        (39151, "Stark"),
+        (39153, "Summit"),
+    ),
+)
+def test_getCountyNameFromFIPS(input, expected):
+    assert utility.getCountyNameFromFIPS(input) == expected
