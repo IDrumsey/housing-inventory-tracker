@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  RAW_HISTORICAL_COUNTY_INVENTORY_DATA_SAVE_LOCATION: ${{vars.RAW_HISTORICAL_COUNTY_INVENTORY_DATA_SAVE_LOCATION}}
+
 jobs:
   run-tests:
     name: Run Unit Tests
