@@ -5,7 +5,7 @@ on:
   pull_request:
 
 env:
-  RAW_HISTORICAL_COUNTY_INVENTORY_DATA_SAVE_LOCATION: ${{vars.RAW_HISTORICAL_COUNTY_INVENTORY_DATA_SAVE_LOCATION}}
+  raw_historical_county_inventory_data_save_location: ${{vars.RAW_HISTORICAL_COUNTY_INVENTORY_DATA_SAVE_LOCATION}}
 
 jobs:
   run-tests:
