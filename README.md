@@ -1,3 +1,5 @@
+[![Unit Tests CI](https://github.com/IDrumsey/housing-inventory-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/IDrumsey/housing-inventory-tracker/actions/workflows/ci.yml)
+
 # housing-inventory-tracker
 
 Creates a line graph showing inventory in a United States county using FIPs codes.
